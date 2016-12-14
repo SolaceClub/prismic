@@ -2,7 +2,7 @@ defmodule SendGrid.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :prsimic,
+    [app: :prismic,
      version: "0.0.1",
      elixir: "~> 1.2",
      package: package,
@@ -40,7 +40,7 @@ defmodule SendGrid.Mixfile do
 
   defp project_url do
     """
-    https://github.com/SolaceClub/prsimic
+    https://github.com/SolaceClub/prismic
     """
   end
 
