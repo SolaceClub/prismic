@@ -1,4 +1,4 @@
-defmodule SendGrid.Mixfile do
+defmodule Prismic.Mixfile do
   use Mix.Project
 
   def project do
