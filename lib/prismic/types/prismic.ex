@@ -33,7 +33,7 @@ defmodule Solace.Prismic.Types.Prismic do
     text
   end # end process_spans/2
 
-  def process_spans(text, [] = spans) do
+  def process_spans(text, [] = _spans) do
     text
   end # end process_spans/2
 

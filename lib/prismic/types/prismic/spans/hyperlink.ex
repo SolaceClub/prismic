@@ -42,7 +42,7 @@ defimpl Solace.PrismicSpanProtocol, for: Solace.Prismic.Types.Prismic.Spans.Hype
     end
   end # end open/1
 
-  def close(entity) do
+  def close(_entity) do
     "</a>"
   end # end close/1
 end # end defimpl Solace.PrismicSpanProtocol, for: Solace.Prismic.Types.Prismic.Spans.HyperLink

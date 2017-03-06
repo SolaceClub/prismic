@@ -5,8 +5,7 @@
 
 defmodule Solace.Prismic.Types.Prismic.ImageMeta do
   alias Solace.Prismic.Types.Prismic.ImageMeta
-  alias Solace.Prismic.Types.Prismic.Image
-  alias Solace.Prismic.Types.Prismic
+  alias Solace.Prismic.Types.Prismic.Image  
   @vsn 0.01
 
   @type t :: %ImageMeta{
@@ -34,7 +33,7 @@ defmodule Solace.Prismic.Types.Prismic.ImageMeta do
 end # end defmodule Solace.Prismic.Types.Prismic.ImageMeta
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.ImageMeta do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     Solace.PrismicProtocol.decode(entity.image)
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.ImageMeta

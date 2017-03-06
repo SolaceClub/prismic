@@ -5,7 +5,6 @@
 
 defmodule Solace.Prismic.Types.Prismic.LinkWeb do
   alias Solace.Prismic.Types.Prismic.LinkWeb
-  alias Solace.Prismic.Types.Prismic
   @vsn 0.01
 
   @type t :: %LinkWeb{
@@ -30,7 +29,10 @@ end # end defmodule Solace.Prismic.Types.Prismic.LinkWeb
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.LinkWeb do
   def decode(entity, options \\ %{}) do
-    #TODO process span
-    ~s(<a  class=\"prismic\" href="#{entity.url}">#{entity.url}</a>)
+    if options[:no_wrap] do
+      entity.url
+    else
+      ~s(<a  class=\"prismic\" href="#{entity.url}">#{entity.url}</a>)
+    end
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.LinkWeb

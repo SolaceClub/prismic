@@ -4,8 +4,7 @@
 #-------------------------------------------------------------------------------
 
 defmodule Solace.Prismic.Types.Prismic.Video do
-  alias Solace.Prismic.Types.Prismic.Video
-  alias Solace.Prismic.Types.Prismic
+  alias Solace.Prismic.Types.Prismic.Video  
   @vsn 0.01
 
   def data do
@@ -76,7 +75,7 @@ defmodule Solace.Prismic.Types.Prismic.Video do
 end # end defmodule Solace.Prismic.Types.Prismic.Video
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Video do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     entity.html
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Video

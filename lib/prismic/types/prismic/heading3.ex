@@ -31,7 +31,10 @@ end # end defmodule Solace.Prismic.Types.Prismic.Heading3
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Heading3 do
   def decode(entity, options \\ %{}) do
-    #TODO process span
-    "<h3 class=\"prismic\">" <> entity.text <> "</h3>"
+    if options[:no_wrap] do
+      entity.text
+    else
+      "<h3 class=\"prismic\">" <> entity.text <> "</h3>"
+    end
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Heading3

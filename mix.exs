@@ -3,15 +3,15 @@ defmodule Prismic.Mixfile do
 
   def project do
     [app: :prismic,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.2",
-     package: package,
-     description: description,
-     source_url: project_url,
-     homepage_url: project_url,
+     package: package(),
+     description: description(),
+     source_url: project_url(),
+     homepage_url: project_url(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
   def application do

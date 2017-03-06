@@ -25,10 +25,10 @@ defmodule Solace.Prismic.Types.Prismic.Spans.Strong do
 end # end defmodule Solace.Prismic.Types.Prismic.Spans.Strong
 
 defimpl Solace.PrismicSpanProtocol, for: Solace.Prismic.Types.Prismic.Spans.Strong do
-  def open(entity) do
+  def open(_entity) do
     ~s(<strong class="prismic">)
   end # end open/1
-  def close(entity) do
+  def close(_entity) do
     "</strong>"
   end # end close/1
 end # end defimpl Solace.PrismicSpanProtocol, for: Solace.Prismic.Types.Prismic.Spans.Strong

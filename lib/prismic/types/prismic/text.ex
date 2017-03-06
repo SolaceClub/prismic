@@ -5,7 +5,6 @@
 
 defmodule Solace.Prismic.Types.Prismic.Text do
   alias Solace.Prismic.Types.Prismic.Text
-  alias Solace.Prismic.Types.Prismic
   @vsn 0.01
 
   @type t :: %Text{
@@ -27,7 +26,7 @@ defmodule Solace.Prismic.Types.Prismic.Text do
 end # end defmodule Solace.Prismic.Types.Prismic.Text
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Text do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     entity.text
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Text

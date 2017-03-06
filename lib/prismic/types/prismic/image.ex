@@ -4,8 +4,7 @@
 #-------------------------------------------------------------------------------
 
 defmodule Solace.Prismic.Types.Prismic.Image do
-  alias Solace.Prismic.Types.Prismic.Image
-  alias Solace.Prismic.Types.Prismic
+  alias Solace.Prismic.Types.Prismic.Image  
   @vsn 0.01
 
   @type t :: %Image{
@@ -41,7 +40,7 @@ defmodule Solace.Prismic.Types.Prismic.Image do
 end # end defmodule Solace.Prismic.Types.Prismic.Image
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Image do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     style = case entity.dimensions do
       %{height: nil, width: nil} -> ""
       %{height: height, width: nil} -> ~s(style="height:#{height};")

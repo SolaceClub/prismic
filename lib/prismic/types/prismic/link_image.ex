@@ -4,8 +4,7 @@
 #-------------------------------------------------------------------------------
 
 defmodule Solace.Prismic.Types.Prismic.LinkImage do
-  alias Solace.Prismic.Types.Prismic.LinkImage
-  alias Solace.Prismic.Types.Prismic
+  alias Solace.Prismic.Types.Prismic.LinkImage  
   @vsn 0.01
 
   @type t :: %LinkImage{
@@ -37,7 +36,13 @@ end # end defmodule Solace.Prismic.Types.Prismic.LinkImage
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.LinkImage do
   def decode(entity, options \\ %{}) do
-    #TODO process span
-    "<pre  class=\"prismic\">#{inspect entity}</pre>"
+
+    if options[:no_wrap] do
+      "#{inspect entity}"
+    else
+      "<pre  class=\"prismic\">#{inspect entity}</pre>"
+    end
+
+
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.LinkImage

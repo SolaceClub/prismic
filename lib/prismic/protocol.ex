@@ -44,13 +44,13 @@ defimpl Solace.PrismicProtocol, for: List do
 end # end defimpl Solace.PrismicProtocol, for: List
 
 defimpl Solace.PrismicProtocol, for: Map do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     "#{inspect entity}"
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Map
 
 defimpl Solace.PrismicProtocol, for: Any do
-  def decode(entity, options \\ %{}) do
+  def decode(entity, _options \\ %{}) do
     "#{inspect entity}"
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Any
@@ -59,10 +59,10 @@ end # end defimpl Solace.PrismicProtocol, for: Any
 # Solace.PrismicSpanProtocol
 #----------------------------------------------------------------
 defimpl Solace.PrismicSpanProtocol, for: Any do
-  def open(entity) do
+  def open(_options) do
     ~s(<span class="unknown">)
   end # end open/1
-  def close(entity) do
+  def close(_options) do
     "</span>"
   end # end close/1
 end # end defimpl Solace.PrismicSpanProtocol, for: Any
@@ -71,7 +71,7 @@ end # end defimpl Solace.PrismicSpanProtocol, for: Any
 # Solace.PrismicResultProtocol
 #----------------------------------------------------------------
 defimpl Solace.PrismicResultProtocol, for: Any do
-  def next(entity) do
+  def next(_entity) do
     nil
   end # end next/1
 end # end defimpl Solace.PrismicResultProtocol, for: Any

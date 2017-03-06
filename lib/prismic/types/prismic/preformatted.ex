@@ -31,10 +31,16 @@ end # end defmodule Solace.Prismic.Types.Prismic.Preformatted
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Preformatted do
   alias Solace.Prismic.Types.Prismic
-  def decode(entity) do
+  def decode(entity, options \\ %{}) do
     text = entity.text
       |> Prismic.process_spans(entity.spans)
       |> Prismic.process_newlines()
-    "<pre  class=\"prismic\">" <> text <> "</pre>"
+
+      if options[:no_wrap] do
+        text
+      else
+        "<pre  class=\"prismic\">" <> text <> "</pre>"
+      end
+
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Preformatted

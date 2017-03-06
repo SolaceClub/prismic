@@ -9,7 +9,8 @@ defmodule Solace.Prismic.Api do
   """
   alias Solace.Prismic.Api
   alias Solace.Prismic.Predicate
-  @vsn 0.01
+  @vsn(0.01)
+  @default_retries(3)
 
   @type t :: %Api{
     project: String.t,
@@ -18,6 +19,7 @@ defmodule Solace.Prismic.Api do
     predicates: nil|[],
     sort: nil|[],
     config: Solace.Prismic.Api.Config.t,
+    retries: integer,
     vsn: float
   }
 
@@ -28,6 +30,7 @@ defmodule Solace.Prismic.Api do
     predicates: nil,
     sort: nil,
     config: nil,
+    retries: @default_retries,
     vsn: @vsn
   ]
 
@@ -156,7 +159,16 @@ defmodule Solace.Prismic.Api do
     )
   end # end join/2
 
-  def query(%Api{} = api) do
+  def query(api, retries \\ :default)
+
+  def query(%Api{} = api, :default) do
+    case api.retries do
+      :default -> query(api, @default_retries)
+      n -> query(api, n)
+    end
+  end
+
+  def query(%Api{} = api, retries) do
     param_string =
       [request_part(api, :auth), request_part(api, :query), request_part(api, :order), request_part(api, :ref)]
       |> Enum.filter(fn(x) -> x != nil end)
@@ -172,17 +184,11 @@ defmodule Solace.Prismic.Api do
           |> Poison.decode!()
           |> Solace.Prismic.Response.new(api.ref)
       {:ok, %HTTPoison.Response{status_code: 404}} ->
-        {:error, :not_found}
+        if (retries > 0), do: query(api, retries - 1), else: {:error, :not_found}
+
       {:error, %HTTPoison.Error{reason: reason}} ->
-        {:error, %HTTPoison.Error{reason: reason}}
+        if (retries > 0), do: query(api, retries - 1), else: {:error, %HTTPoison.Error{reason: reason}}
     end
-
   end # end query/1
-
-
-
-
-
-
 
 end # end defmodule Solace.Prismic.Api

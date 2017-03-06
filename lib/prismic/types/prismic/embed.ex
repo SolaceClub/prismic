@@ -26,7 +26,7 @@ defmodule Solace.Prismic.Types.Prismic.Embed do
 end # end defmodule Solace.Prismic.Types.Prismic.Embed
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Embed do
-  def decode(entity) do
+  def decode(entity, _options \\ %{}) do
     Solace.PrismicProtocol.decode(entity.oembed)
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.Embed

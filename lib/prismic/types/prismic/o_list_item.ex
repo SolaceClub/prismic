@@ -31,7 +31,10 @@ end # end defmodule Solace.Prismic.Types.Prismic.OListItem
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.OListItem do
   def decode(entity, options \\ %{}) do
-    #TODO process span
-    "<li  class=\"prismic\">" <> entity.text <> "</li>"
+    if options[:no_wrap] do
+      entity.text
+    else
+      "<li  class=\"prismic\">" <> entity.text <> "</li>"
+    end
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.Prismic.OListItem

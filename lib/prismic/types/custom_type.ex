@@ -87,7 +87,7 @@ end # end defmodule Solace.Prismic.Types.CustomType
 
 
 defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.CustomType do
-  def decode(entity, options \\ %{}) do
+  def decode(_entity, _options \\ %{}) do
     "CustomType"
   end # end decode/1
 end # end defimpl Solace.PrismicProtocol, for: Solace.Prismic.Types.CustomType
