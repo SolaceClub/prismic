@@ -1,6 +1,26 @@
+defmodule Solace.ComponentCase do
+  @moduledoc """
+  This module defines the test case to be used by
+  component tests.
+
+  """
+
+  use ExUnit.CaseTemplate
+  using do
+    quote do
+
+    end
+  end
+
+  setup tags do
+    :ok
+  end
+end
+
+
 defmodule Solace.PrismicTest do
   alias Solace.Prismic.Api
-  use SolaceBackend.ComponentCase
+  use Solace.ComponentCase
 
   @prismic_type_inspiration "daily-inspirational-image"
   @prismic_type_affirmation "1"

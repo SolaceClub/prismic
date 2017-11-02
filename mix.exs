@@ -3,7 +3,7 @@ defmodule Prismic.Mixfile do
 
   def project do
     [app: :prismic,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.2",
      package: package(),
      description: description(),
@@ -27,8 +27,8 @@ defmodule Prismic.Mixfile do
     [
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev},
-      {:httpoison, "~> 0.9.0"},
-      {:poison, "~> 2.0"}
+      {:httpoison, "~> 0.13.0"},
+      {:poison, "~> 2.2.0"}
     ]
   end
 
